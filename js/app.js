@@ -35,7 +35,7 @@ class HTML {
         //Remove message after 3 seconds
         setTimeout(function() {
             document.querySelector('.primary .alert').remove();
-            // addExpenseForm.reset();
+            addExpenseForm.reset();
         }, 3000);
     }
 
@@ -53,11 +53,11 @@ class HTML {
         `;
 
         // Insert into HTML
-        expenseList.appendChild(li)
-        addExpenseForm.reset();
+        expenseList.appendChild(li);
+        // addExpenseForm.reset();
     }
 
-    //Deduct expense amount from Budget
+    // Track what percentage of the budget is used and apply class
     trackBudget(amount) {
         const budgetAfterExpense = budget.subractFromBudget(amount);
         budgetLeft.innerHTML = `${budgetAfterExpense}`;
@@ -131,6 +131,8 @@ function eventListeners() {
 
             // Track what % of budget is left
             html.trackBudget(amount);
+            html.printMessage('Added...', 'alert-success');
+
         }
     })
 }
